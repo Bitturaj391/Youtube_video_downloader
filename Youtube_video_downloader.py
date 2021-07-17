@@ -1,0 +1,20 @@
+from pytube import YouTube
+link = input("Enter the video link of youtube which you want to download ")
+try:
+    yt = YouTube(link)
+    print("Title: ",yt.title)
+    print("Number of views: ",yt.title)
+    print("Length of video: ",yt.length,"seconds")
+    print("Discription of video: ",yt.discription)
+    print("Ratting: ",yt.rating)
+    print(yt.streams)
+    print(yt.streams.filter(only_audio=True))
+    print(yt.streams.filter(only_video=True))
+    print(yt.streams.filter(progressive = True))
+    ys = yt.streams.get_highest_resolution()
+    ys = yt.streams.get_by_itag('22')
+    print("please wait video is downloading.......")
+    ys.download()
+    print("Download Completed.")
+except:
+    print("Connection Error OR  Error 404 found ")
